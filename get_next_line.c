@@ -5,57 +5,87 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 17:58:02 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/11/24 19:26:17 by mmuesser         ###   ########.fr       */
+/*   Created: 2022/11/25 11:07:36 by mmuesser          #+#    #+#             */
+/*   Updated: 2022/11/25 15:12:15 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*get_next_line(int fd)
+char	*ft_read(char *str, int fd)
 {
-	static char	*str;
-	char		*dest;
-	char		*tmp;
-	int			file;
-	int			i;
-	int			lenght;
+	char	*tmp;
+	int		file;
 
-	dest = NULL;
-	if (fd > 1024 || fd <= 0)
-		return (NULL);
-	tmp = ft_calloc(sizeof(char) , (BUFFER_SIZE + 1));
+	tmp = ft_calloc(sizeof(char), (BUFFER_SIZE + 1));
 	if (!tmp)
+	{
+		free(tmp);
 		return (NULL);
-	if (!str)
-		str = ft_calloc(sizeof(char) , 1);
-	if (!str)
-		return (NULL);
+	}
 	file = 1;
-	while ( file != 0 && ft_in_str(tmp, '\n') == -1)
+	while (!ft_strchr(tmp, '\n') && file != 0)
 	{
 		file = read(fd, tmp, BUFFER_SIZE);
-		if (file <= 0)
+		if (file == -1)
+		{
+			free(tmp);
 			return (NULL);
+		}
 		tmp[file] = '\0';
 		str = ft_strjoin(str, tmp);
-		
 	}
 	free(tmp);
-	lenght = ft_in_str(str, '\n');
-	dest = ft_calloc(sizeof(char) , (lenght + 2));
+	return (str);
+}
+
+void	ft_fill(char **str, char **s1)
+{
+	int		i;
+	char	*tmp;
+	char	*dest;
+
+	tmp = *str;
+	dest = *s1;
 	i = 0;
-	while (str[i] != '\n' && str[i])
+	while (tmp[i] != '\n' && tmp[i])
 	{
-		dest[i] = str[i];
+		dest[i] = tmp[i];
 		i++;
 	}
-	if (str[i] == '\n')
+	if (tmp[i] == '\n')
 	{
-		dest[i] = str[i];
+		dest[i] = tmp[i];
 		i++;
 	}
 	dest[i] = '\0';
-	str = ft_strtrim(str, dest);
+	tmp = ft_strdup(*str, i);
+	free(*str);
+	*str = tmp;
+	if (!*str)
+		free(*str);
+}
+
+char	*get_next_line(int fd)
+{
+	char		*dest;
+	static char	*str;
+	int			i;
+
+	if (!str)
+		str = ft_calloc(sizeof(char), 1);
+	str = ft_read(str, fd);
+	if (!str)
+	{
+		free(str);
+		return (NULL);
+	}
+	i = 0;
+	while (str[i] != '\n')
+		i++;
+	if (str[i] == '\n')
+		i++;
+	dest = malloc(sizeof(char) * (i + 1));
+	ft_fill(&str, &dest);
 	return (dest);
 }
