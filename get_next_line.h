@@ -6,7 +6,7 @@
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:09:08 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/11/25 15:11:57 by mmuesser         ###   ########.fr       */
+/*   Updated: 2022/11/26 14:48:57 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <stdint.h>
 
 char	*get_next_line(int fd);
 void	*ft_calloc(size_t nmemb, size_t size);

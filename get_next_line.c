@@ -6,7 +6,7 @@
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:07:36 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/11/25 15:12:15 by mmuesser         ###   ########.fr       */
+/*   Updated: 2022/11/26 15:02:39 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ char	*get_next_line(int fd)
 	static char	*str;
 	int			i;
 
-	if (!str)
-		str = ft_calloc(sizeof(char), 1);
 	str = ft_read(str, fd);
 	if (!str)
 	{
@@ -81,11 +79,17 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	i = 0;
-	while (str[i] != '\n')
+	while (str[i] != '\n' && str[i])
 		i++;
 	if (str[i] == '\n')
 		i++;
-	dest = malloc(sizeof(char) * (i + 1));
+	dest = ft_calloc(sizeof(char), (i + 1));
 	ft_fill(&str, &dest);
+	if (dest[0] == '\0')
+	{
+		free(dest);
+		free(str);
+		return (NULL);
+	}
 	return (dest);
 }
