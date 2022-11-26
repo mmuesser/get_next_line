@@ -6,7 +6,7 @@
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:17:01 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/11/26 15:07:00 by mmuesser         ###   ########.fr       */
+/*   Updated: 2022/11/26 15:21:24 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	int		i;
 	char	*dest;
 
-	if (!s1)
-		ft_calloc(sizeof(char), 1);
+	 if (!s1)
+	 	s1 = ft_calloc(sizeof(char), 1);
 	lenght = ft_strlen(s1) + ft_strlen(s2);
-	dest = ft_calloc(sizeof(char), lenght + 1);
+	dest = ft_calloc(sizeof(char), (lenght + 1));
 	if (!dest)
 		return (NULL);
 	i = -1;
