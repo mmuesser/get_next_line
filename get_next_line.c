@@ -6,7 +6,7 @@
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:07:36 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/11/26 15:21:29 by mmuesser         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:46:10 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ char	*ft_read(char *str, int fd)
 	char	*tmp;
 	int		file;
 
-	tmp = ft_calloc(sizeof(char), (BUFFER_SIZE + 1));
+	tmp = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!tmp)
 	{
 		free(tmp);
 		return (NULL);
 	}
+	tmp[0] = '\0';
 	file = 1;
 	while (!ft_strchr(tmp, '\n') && file != 0)
 	{
@@ -83,7 +84,7 @@ char	*get_next_line(int fd)
 		i++;
 	if (str[i] == '\n')
 		i++;
-	dest = ft_calloc(sizeof(char), (i + 1));
+	dest = malloc(sizeof(char) * (i + 1));
 	ft_fill(&str, &dest);
 	if (dest[0] == '\0')
 	{

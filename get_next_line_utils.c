@@ -6,7 +6,7 @@
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:17:01 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/11/26 15:21:24 by mmuesser         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:28:40 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,12 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	char	*ptr;
-	size_t	i;
-
-	if (nmemb != 0 && size != 0 && size > (size * nmemb) / nmemb)
-		return (NULL);
-	ptr = malloc(size * nmemb);
-	if (!ptr)
-		return (NULL);
-	i = 0;
-	while (i < nmemb * size)
-	{
-		ptr[i] = 0;
-		i++;
-	}
-	return (ptr);
-}
-
 char	*ft_strchr(const char *str, int c)
 {
 	int	i;
 
+	if (!str)
+		return (NULL);
 	if (c > 255)
 		c -= 256;
 	i = 0;
@@ -61,16 +44,21 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	int		lenght;
 	int		i;
 	char	*dest;
 
-	 if (!s1)
-	 	s1 = ft_calloc(sizeof(char), 1);
+	if (!s1)
+	{
+		s1 = (char *) malloc(sizeof(char) * 1);
+		if (!s1)
+			return (NULL);
+		s1[0] = '\0';
+	}
 	lenght = ft_strlen(s1) + ft_strlen(s2);
-	dest = ft_calloc(sizeof(char), (lenght + 1));
+	dest = malloc(sizeof(char) * (lenght + 1));
 	if (!dest)
 		return (NULL);
 	i = -1;

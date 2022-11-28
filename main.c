@@ -6,26 +6,40 @@
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:44:41 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/11/26 15:01:43 by mmuesser         ###   ########.fr       */
+/*   Updated: 2022/11/28 17:04:07 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		main(void)
+int	main(void)
 {
 	char	*str;
-	int 	fd;
+	//char	*str2;
+	int		fd;
+	//int		fd2;
 
 	fd = open("./files/test", O_RDONLY);
+	//fd2 = open ("./fles/test2", O_RDONLY);
 	while ((str = get_next_line(fd)))
 	{
 		if (!str)
-		 	break ;
+			break ;
 		printf("%s", str);
-		printf("-----------------------------------------------------------\n");
+		printf("------------------------------------------------------------\n");
 		free (str);
 	}
+	// str = get_next_line(fd);
+	// if (!str)
+	// 	return (0);
+	// str2 = get_next_line(fd2);
+	// if (!str2)
+	// 	return (0);
+	// printf("%s | %s", str, str2);
+	// printf("----------------------------------------------------------------\n");
+	// free(str);
+	// free(str2);
+	// close(fd2);
 	close(fd);
 	return (0);
 }
