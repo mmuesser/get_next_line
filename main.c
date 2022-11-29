@@ -6,7 +6,7 @@
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:44:41 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/11/28 17:04:07 by mmuesser         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:05:40 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,7 @@ int	main(void)
 		printf("------------------------------------------------------------\n");
 		free (str);
 	}
-	// str = get_next_line(fd);
-	// if (!str)
-	// 	return (0);
-	// str2 = get_next_line(fd2);
-	// if (!str2)
-	// 	return (0);
-	// printf("%s | %s", str, str2);
-	// printf("----------------------------------------------------------------\n");
-	// free(str);
-	// free(str2);
-	// close(fd2);
+
 	close(fd);
 	return (0);
 }
