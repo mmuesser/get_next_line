@@ -6,7 +6,7 @@
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:17:01 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/11/29 16:16:50 by mmuesser         ###   ########.fr       */
+/*   Updated: 2022/11/30 09:51:18 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2, int lens1, int lens2)
 {
 	int		lenght;
 	int		i;
@@ -57,16 +57,16 @@ char	*ft_strjoin(char *s1, char *s2)
 			return (NULL);
 		s1[0] = '\0';
 	}
-	lenght = ft_strlen(s1) + ft_strlen(s2);
+	lenght = lens1 + lens2;
 	dest = malloc(sizeof(char) * (lenght + 1));
 	if (!dest)
 		return (NULL);
 	i = -1;
-	while (++i < ft_strlen(s1))
+	while (++i < lens1)
 		dest[i] = s1[i];
 	i = -1;
-	while (++i < ft_strlen(s2))
-		dest[i + ft_strlen(s1)] = s2[i];
+	while (++i < lens2)
+		dest[i + lens1] = s2[i];
 	dest[lenght] = '\0';
 	free((char *) s1);
 	return (dest);

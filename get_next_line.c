@@ -6,7 +6,7 @@
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:07:36 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/11/29 16:26:36 by mmuesser         ###   ########.fr       */
+/*   Updated: 2022/11/30 09:50:34 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ char	*ft_read(char *str, int fd)
 {
 	char	*tmp;
 	int		file;
+	int		lens1;
+	int		lens2;
 
 	tmp = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!tmp)
@@ -31,7 +33,9 @@ char	*ft_read(char *str, int fd)
 			return (NULL);
 		}
 		tmp[file] = '\0';
-		str = ft_strjoin(str, tmp);
+		lens1 = ft_strlen(str);
+		lens2 = ft_strlen(tmp);
+		str = ft_strjoin(str, tmp, lens1, lens2);
 	}
 	free(tmp);
 	return (str);
