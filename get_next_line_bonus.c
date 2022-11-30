@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/25 11:07:36 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/11/30 10:16:05 by mmuesser         ###   ########.fr       */
+/*   Created: 2022/11/30 10:18:15 by mmuesser          #+#    #+#             */
+/*   Updated: 2022/11/30 10:20:02 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_read(char *str, int fd)
 {
@@ -71,24 +71,24 @@ void	ft_fill(char **str, char **dest)
 char	*get_next_line(int fd)
 {
 	char		*dest;
-	static char	*str;
+	static char	*str[1024];
 	int			i;
 
-	str = ft_read(str, fd);
-	if (!str)
+	str[fd] = ft_read(str[fd], fd);
+	if (!str[fd])
 	{
-		free(str);
+		free(str[fd]);
 		return (NULL);
 	}
 	i = 0;
-	while (str[i] != '\n' && str[i])
+	while (str[fd][i] != '\n' && str[fd][i])
 		i++;
-	if (str[i] == '\n')
+	if (str[fd][i] == '\n')
 		i++;
 	dest = malloc(sizeof(char) * (i + 1));
 	if (!dest)
 		return (NULL);
-	ft_fill(&str, &dest);
+	ft_fill(&str[fd], &dest);
 	if (dest[0] == '\0')
 	{
 		free(dest);
