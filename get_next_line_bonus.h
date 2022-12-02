@@ -6,7 +6,7 @@
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 10:18:08 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/11/30 10:29:14 by mmuesser         ###   ########.fr       */
+/*   Updated: 2022/11/30 11:00:04 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdint.h>
-char	*get_next_line(int fd);
 
+char	*get_next_line(int fd);
 char	*ft_strchr(const char *str, int c);
 char	*ft_read(char *str, int fd);
 char	*ft_strjoin(char *s1, char *s2, int lens1, int lens2);

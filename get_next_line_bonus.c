@@ -6,7 +6,7 @@
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 10:18:15 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/11/30 10:20:02 by mmuesser         ###   ########.fr       */
+/*   Updated: 2022/12/02 11:32:21 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,7 @@ char	*get_next_line(int fd)
 
 	str[fd] = ft_read(str[fd], fd);
 	if (!str[fd])
-	{
-		free(str[fd]);
 		return (NULL);
-	}
 	i = 0;
 	while (str[fd][i] != '\n' && str[fd][i])
 		i++;
@@ -91,6 +88,7 @@ char	*get_next_line(int fd)
 	ft_fill(&str[fd], &dest);
 	if (dest[0] == '\0')
 	{
+		free(str);
 		free(dest);
 		return (NULL);
 	}

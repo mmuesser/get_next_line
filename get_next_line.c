@@ -6,7 +6,7 @@
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:07:36 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/11/30 10:16:05 by mmuesser         ###   ########.fr       */
+/*   Updated: 2022/12/02 11:31:47 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ void	ft_fill(char **str, char **dest)
 	tmp = ft_strdup(*str, i);
 	free(*str);
 	*str = tmp;
-	if (!*str)
-		free(*str);
 }
 
 char	*get_next_line(int fd)
@@ -76,10 +74,7 @@ char	*get_next_line(int fd)
 
 	str = ft_read(str, fd);
 	if (!str)
-	{
-		free(str);
 		return (NULL);
-	}
 	i = 0;
 	while (str[i] != '\n' && str[i])
 		i++;
@@ -91,6 +86,7 @@ char	*get_next_line(int fd)
 	ft_fill(&str, &dest);
 	if (dest[0] == '\0')
 	{
+		free(str);
 		free(dest);
 		return (NULL);
 	}
