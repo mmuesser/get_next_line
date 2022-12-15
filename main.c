@@ -6,7 +6,7 @@
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:44:41 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/12/02 11:08:42 by mmuesser         ###   ########.fr       */
+/*   Updated: 2022/12/13 15:13:04 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(void)
 	char	*str;
 	int		fd;
 
-	fd = open("./files/test", O_RDONLY);
+	fd = open("./files/empty", O_RDONLY);
 	while ((str = get_next_line(fd)))
 	{
 		if (!str)

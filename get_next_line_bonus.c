@@ -6,7 +6,7 @@
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 10:18:15 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/12/02 11:32:21 by mmuesser         ###   ########.fr       */
+/*   Updated: 2022/12/13 15:23:20 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char	*get_next_line(int fd)
 	ft_fill(&str[fd], &dest);
 	if (dest[0] == '\0')
 	{
-		free(str);
+		free(str[fd]);
 		free(dest);
 		return (NULL);
 	}
