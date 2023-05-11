@@ -6,7 +6,7 @@
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 10:18:12 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/11/30 10:18:37 by mmuesser         ###   ########.fr       */
+/*   Updated: 2023/05/03 18:35:06 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	*ft_strdup(const char *src, int start)
 	int		lenght;
 	int		i;
 
-	lenght = ft_strlen(src) - start;
+	lenght = ft_strlen2(src) - start;
 	dest = malloc(sizeof(char) * (lenght + 1));
 	if (!dest)
 		return (NULL);

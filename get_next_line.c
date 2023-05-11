@@ -6,7 +6,7 @@
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:07:36 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/12/02 11:31:47 by mmuesser         ###   ########.fr       */
+/*   Updated: 2023/05/03 18:36:10 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_read(char *str, int fd)
 		return (NULL);
 	tmp[0] = '\0';
 	file = 1;
-	while (!ft_strchr(tmp, '\n') && file != 0)
+	while (!ft_strchr2(tmp, '\n') && file != 0)
 	{
 		file = read(fd, tmp, BUFFER_SIZE);
 		if (file == -1)
@@ -33,9 +33,9 @@ char	*ft_read(char *str, int fd)
 			return (NULL);
 		}
 		tmp[file] = '\0';
-		lens1 = ft_strlen(str);
-		lens2 = ft_strlen(tmp);
-		str = ft_strjoin(str, tmp, lens1, lens2);
+		lens1 = ft_strlen2(str);
+		lens2 = ft_strlen2(tmp);
+		str = ft_strjoin2(str, tmp, lens1, lens2);
 	}
 	free(tmp);
 	return (str);
@@ -61,7 +61,7 @@ void	ft_fill(char **str, char **dest)
 		i++;
 	}
 	tmp2[i] = '\0';
-	tmp = ft_strdup(*str, i);
+	tmp = ft_strdup2(*str, i);
 	free(*str);
 	*str = tmp;
 }

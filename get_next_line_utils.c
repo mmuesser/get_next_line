@@ -6,13 +6,13 @@
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:17:01 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/12/02 11:23:56 by mmuesser         ###   ########.fr       */
+/*   Updated: 2023/05/11 19:11:57 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(const char *str)
+int	ft_strlen2(const char *str)
 {
 	int	i;
 
@@ -24,7 +24,7 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr2(const char *str, int c)
 {
 	int	i;
 
@@ -44,7 +44,7 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(char *s1, char *s2, int lens1, int lens2)
+char	*ft_strjoin2(char *s1, char *s2, int lens1, int lens2)
 {
 	int		lenght;
 	int		i;
@@ -72,13 +72,15 @@ char	*ft_strjoin(char *s1, char *s2, int lens1, int lens2)
 	return (dest);
 }
 
-char	*ft_strdup(const char *src, int start)
+char	*ft_strdup2(const char *src, int start)
 {
 	char	*dest;
 	int		lenght;
 	int		i;
 
-	lenght = ft_strlen(src) - start;
+	lenght = ft_strlen2(src) - start;
+	if (lenght == 0)
+		return (NULL);
 	dest = malloc(sizeof(char) * (lenght + 1));
 	if (!dest)
 		return (NULL);

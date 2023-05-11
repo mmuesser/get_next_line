@@ -6,7 +6,7 @@
 /*   By: mmuesser <mmuesser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:09:08 by mmuesser          #+#    #+#             */
-/*   Updated: 2022/11/30 10:09:44 by mmuesser         ###   ########.fr       */
+/*   Updated: 2023/05/03 18:34:22 by mmuesser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 # include <stdint.h>
 
 char	*get_next_line(int fd);
-char	*ft_strchr(const char *str, int c);
+char	*ft_strchr2(const char *str, int c);
 char	*ft_read(char *str, int fd);
-char	*ft_strjoin(char *s1, char *s2, int lens1, int lens2);
-char	*ft_strdup(const char *src, int start);
-int		ft_strlen(const char *str);
+char	*ft_strjoin2(char *s1, char *s2, int lens1, int lens2);
+char	*ft_strdup2(const char *src, int start);
+int		ft_strlen2(const char *str);
 void	ft_fill(char **str, char **s1);
 
 #endif
